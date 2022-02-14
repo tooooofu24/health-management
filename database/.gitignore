@@ -1,2 +1,2 @@
 *.sqlite*
-./seeders/SeedData.php
+seeders/SeedData.php
