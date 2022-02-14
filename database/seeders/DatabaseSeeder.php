@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             GradeSeeder::class,
             ClubSeeder::class,
             StudentSeeder::class,
+            AdminSeeder::class,
+            AnswerSeeder::class,
         ]);
     }
 }
