@@ -10,4 +10,9 @@ class Grade extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function getNameAttribute()
+    {
+        return "{$this->grade}年{$this->class}組";
+    }
 }

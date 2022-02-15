@@ -27,6 +27,7 @@ class CreateAnswersTable extends Migration
             $table->boolean('q4');
             $table->boolean('q5');
             $table->string('comment')->nullable();
+            $table->dateTime('checked_at')->nullable();
             $table->timestamps();
         });
     }

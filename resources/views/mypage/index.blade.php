@@ -1,15 +1,8 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
-@section('nav_title', '健康チェック管理 - 生徒別ページ')
+@section('nav_title', 'マイページ')
 @section('content')
 <div class="container-lg py-2">
-    <nav aria-label="breadcrumb" class="ps-2">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('admin.index') }}"><i class="fa-solid fa-house"></i></a></li>
-            <li class="breadcrumb-item"><a href="{{ route('admin.class',['id'=>$student->class->id]) }}">{{ $student->class->name }}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ $student->name }}</li>
-        </ol>
-    </nav>
     <div class="card">
         <div class="card-body">
             <table class="table table-hover table-centered border-0 w-100">
@@ -25,8 +18,7 @@
                         <th scope="col" class="text-nowrap border-0">だるさ</th>
                         <th scope="col" class="text-nowrap border-0">食欲減</th>
                         <th scope="col" class="text-nowrap border-0">通院</th>
-                        <th scope="col" class="border-0">備考</th>
-                        <th class="text-nowrap border-0 rounded-end"></th>
+                        <th scope="col" class="border-0 rounded-end">備考</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,10 +34,7 @@
                         <td class="align-middle text-nowrap border-0">{{ $answer->q3 }}</td>
                         <td class="align-middle text-nowrap border-0">{{ $answer->q4 }}</td>
                         <td class="align-middle text-nowrap border-0">{{ $answer->q5 }}</td>
-                        <td class="align-middle border-0">{{ $answer->comment }}</td>
-                        <td class="align-middle text-nowrap border-0 text-center rounded-end">
-                            <button class="btn btn-success">承認</button>
-                        </td>
+                        <td class="align-middle border-0 rounded-end">{{ $answer->comment }}</td>
                     </tr>
                     @endforeach
                 </tbody>
