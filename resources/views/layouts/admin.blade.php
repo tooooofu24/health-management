@@ -68,6 +68,11 @@
 
         <main class="pb-4 h-100" style="padding-top: 4rem">
             @yield('content')
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
+                <div id="toast" class="toast hide w-auto" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-body px-4">承認しました！</div>
+                </div>
+            </div>
         </main>
     </div>
 </body>

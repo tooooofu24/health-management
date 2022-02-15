@@ -53,16 +53,35 @@
                         <td class="align-middle text-nowrap border-0">{{ optional($student->answer)->q4 }}</td>
                         <td class="align-middle text-nowrap border-0">{{ optional($student->answer)->q5 }}</td>
                         <td class="align-middle border-0">{{ optional($student->answer)->comment }}</td>
-                        <td class="align-middle text-nowrap border-0 text-center pe-0 rounded-end">
-                            <button class="btn btn-success">承認</button>
+                        <td class="align-middle text-nowrap border-0 text-center pe-0">
+                            @if($student->answer && !$student->answer->checked_at)
+                            <common-check-button-component :id='@json($student->answer->id)'></common-check-button-component>
+                            @elseif($student->answer && $student->answer->checked_at)
+                            <button class="btn btn-success" disabled>承認済</button>
+                            @else
+                            <button class="btn btn-danger" disabled>未回答</button>
+                            @endif
                         </td>
                         <td class="align-middle text-nowrap border-0 text-center ps-0 rounded-end">
-                            <a class="btn btn-secondary" href="{{ route('admin.student',['id'=>$student->id]) }}"><i class="fa-solid fa-user-pen"></i></a>
+                            <a class="btn btn-secondary" href="{{ route('admin.student',['id'=>$student->id]) }}">
+                                <i class="fa-solid fa-user-pen"></i>
+                            </a>
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+        </div>
+    </div>
+    <div aria-live="polite" aria-atomic="true" class="position-relative">
+        <div class="toast-container position-absolute top-0 end-0 p-3">
+            @foreach($students as $student)
+            @if($student->answer && !$student->answer->checked_at)
+            <div class="toast hide w-auto" role="alert" aria-live="assertive" aria-atomic="true" data-id="{{ $student->answer->id }}">
+                <div class="toast-body px-4">承認しました！</div>
+            </div>
+            @endif
+            @endforeach
         </div>
     </div>
 </div>

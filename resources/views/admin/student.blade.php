@@ -44,7 +44,11 @@
                         <td class="align-middle text-nowrap border-0">{{ $answer->q5 }}</td>
                         <td class="align-middle border-0">{{ $answer->comment }}</td>
                         <td class="align-middle text-nowrap border-0 text-center rounded-end">
-                            <button class="btn btn-success">承認</button>
+                            @if(!$answer->checked_at)
+                            <common-check-button-component :id='@json($answer->id)'></common-check-button-component>
+                            @else
+                            <button class="btn btn-success" disabled>承認済</button>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

@@ -5,11 +5,12 @@
  */
 
 window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle.js');
+window.axios = require('axios');
 
 import { createApp } from 'vue';
 import ExampleComponent from './components/ExampleComponent.vue';
 import AdminTopComponent from './components/AdminTopComponent.vue';
-
+import CommonCheckButtonComponent from './components/CommonCheckButtonComponent.vue';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -21,5 +22,6 @@ createApp({
     components: {
         ExampleComponent,
         AdminTopComponent,
+        CommonCheckButtonComponent,
     }
 }).mount('#app')
