@@ -84,6 +84,6 @@ class LoginController extends Controller
     public function adminLogout(Request $request)
     {
         Auth::guard('admin')->logout();
-        return redirect()->route('admin.show-login'); // ここを好きな遷移先に変更する。
+        return redirect()->route('admin.login'); // ここを好きな遷移先に変更する。
     }
 }

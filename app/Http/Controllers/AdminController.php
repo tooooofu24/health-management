@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
+use App\Models\Club;
 use App\Models\Grade;
 use App\Models\Student;
 use Carbon\Carbon;
@@ -12,8 +13,9 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $grades = Grade::all();
-        return view('admin.index', compact(['grades']));
+        $classes = Grade::all();
+        $clubs = Club::all();
+        return view('admin.index', compact(['classes', 'clubs']));
     }
 
     public function class(Request $request, $id)
@@ -30,6 +32,22 @@ class AdminController extends Controller
             $students[] = $student;
         }
         return view('admin.class', compact(['students', 'date', 'class']));
+    }
+
+    public function club(Request $request, $id)
+    {
+        $club = Club::findOrFail($id);
+        $student_data = Student::where('club_id', $id)->orderBy('grade_id', 'desc')->get();
+        $date = $request->input('date', Carbon::today()->toDateString());
+        $answer_data = Answer::where('date', $date)->whereIn('student_id', $student_data->pluck('id'))->get();
+        $students = [];
+        foreach ($student_data as $student) {
+            $data = $answer_data;
+            $answer = $data->where('student_id', $student->id)->first();
+            $student->answer = $answer;
+            $students[] = $student;
+        }
+        return view('admin.club', compact(['students', 'date', 'club']));
     }
 
     public function student(Request $request, $id)
