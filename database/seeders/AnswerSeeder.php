@@ -15,13 +15,6 @@ class AnswerSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 1; $i <= Student::count(); $i++) {
-            Answer::factory()->count(1)->create(
-                [
-                    'student_id' => $i,
-                    'date' => now()
-                ]
-            );
-        }
+        Answer::insert(SeedData::ANSWERS);
     }
 }
