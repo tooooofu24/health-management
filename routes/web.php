@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnswerController;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -40,3 +41,8 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('form', function () {
+    $today = Carbon::today()->toDateString();
+    return redirect("https://docs.google.com/forms/d/e/1FAIpQLSeTrkcmNjYMYZUqfw5suWYJn-9r3Y9nwVVqEx-Ez3bd3chCZQ/viewform?usp=pp_url&entry.501475986=$today");
+});

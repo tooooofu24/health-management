@@ -47,4 +47,14 @@ class Answer extends Model
     {
         return $this->formatAnswer($value);
     }
+
+    public function getMorningTempAttribute($value)
+    {
+        return number_format($value, 1);
+    }
+
+    public function getNightTempAttribute($value)
+    {
+        return number_format($value, 1);
+    }
 }
