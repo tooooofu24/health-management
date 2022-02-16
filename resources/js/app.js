@@ -11,6 +11,8 @@ import { createApp } from 'vue';
 import ExampleComponent from './components/ExampleComponent.vue';
 import AdminTopComponent from './components/AdminTopComponent.vue';
 import CommonCheckButtonComponent from './components/CommonCheckButtonComponent.vue';
+import UserNavigationComponent from './components/UserNavigationComponent.vue';
+import AdminNavigationComponent from './components/AdminNavigationComponent.vue';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -23,5 +25,13 @@ createApp({
         ExampleComponent,
         AdminTopComponent,
         CommonCheckButtonComponent,
-    }
+        UserNavigationComponent,
+        AdminNavigationComponent
+    },
 }).mount('#app')
+
+// tooltipの初期化
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+})

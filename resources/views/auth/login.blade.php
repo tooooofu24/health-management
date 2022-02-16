@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','生徒・保護者様ログイン')
+@section('title','健康チェック管理 - 生徒・保護者様ログイン')
 @section('nav_title','生徒・保護者様ログイン')
 @section('content')
 <div class="container-lg h-100">

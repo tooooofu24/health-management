@@ -1,6 +1,7 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
-@section('nav_title', '健康チェック管理 - トップページ')
+@section('title', '管理者画面 - トップページ')
+@section('nav_title', '管理者画面')
 @section('content')
 <div class="h-100 d-flex align-items-center">
     <div class="container-lg">

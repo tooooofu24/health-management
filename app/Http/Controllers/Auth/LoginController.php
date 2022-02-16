@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -78,12 +79,14 @@ class LoginController extends Controller
         // user surpasses their maximum number of attempts they will get locked out.
         $this->incrementLoginAttempts($request);
 
-        return back()->withInput($request->only('email', 'remember'));
+        // return back()
+        //     ->withInput($request->only('email', 'remember'));
+        return $this->sendFailedLoginResponse($request);
     }
 
     public function adminLogout(Request $request)
     {
         Auth::guard('admin')->logout();
-        return redirect()->route('admin.login'); // ここを好きな遷移先に変更する。
+        return redirect()->route('top');
     }
 }

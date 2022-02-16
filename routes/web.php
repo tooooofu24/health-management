@@ -20,9 +20,9 @@ use League\Csv\Reader;
 |
 */
 
-Route::get('/', function () {
+Route::middleware(['guest', 'guest:admin'])->get('/', function () {
     return view('top');
-});
+})->name('top');
 
 Route::get('/admin/login', [App\Http\Controllers\Auth\LoginController::class, 'showAdminLoginForm'])->name('admin.login');
 Route::post('/admin/login', [App\Http\Controllers\Auth\LoginController::class, 'adminLogin'])->name('admin.login');
@@ -34,8 +34,8 @@ Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logou
 
 Route::group(['middleware' => 'auth:admin', 'as' => 'admin.', 'prefix' => 'admin'], function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
-    Route::get('/class/{id}', [AdminController::class, 'class'])->name('class');
-    Route::get('/club/{id}', [AdminController::class, 'club'])->name('club');
+    Route::get('/classes/{id}', [AdminController::class, 'class'])->name('class');
+    Route::get('/clubs/{id}', [AdminController::class, 'club'])->name('club');
     Route::get('/students/{id}', [AdminController::class, 'student'])->name('student');
 });
 
@@ -48,4 +48,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('form', function () {
     $today = Carbon::today()->toDateString();
     return redirect("https://docs.google.com/forms/d/e/1FAIpQLSeTrkcmNjYMYZUqfw5suWYJn-9r3Y9nwVVqEx-Ez3bd3chCZQ/viewform?usp=pp_url&entry.501475986=$today");
-});
+})->name('form');

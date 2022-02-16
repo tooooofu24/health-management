@@ -1,12 +1,13 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
-@section('nav_title','教員ログイン')
+@section('title','教職員ログイン')
+@section('nav_title','教職員ログイン')
 @section('content')
 <div class="container-lg h-100">
     <div class="d-flex h-100 justify-content-center align-items-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">教員ログイン</div>
+                <div class="card-header">教職員ログイン</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.login') }}">
@@ -63,7 +64,7 @@
                 </div>
             </div>
             <div class="text-end p-3">
-                <span>保護者・生徒の方は<a href="{{ route('login') }}">こちら</a></span>
+                <span>保護者様・生徒の方は<a href="{{ route('login') }}">こちら</a></span>
             </div>
         </div>
     </div>
