@@ -17,6 +17,12 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::insert(SeedData::USERS);
+        // User::insert(SeedData::USERS);
+        $user = new User([
+            'email' => 'user@email.com',
+            'password' => Hash::make('password'),
+            'student_id' => 1
+        ]);
+        $user->save();
     }
 }

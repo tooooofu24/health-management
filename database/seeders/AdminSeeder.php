@@ -16,8 +16,8 @@ class AdminSeeder extends Seeder
     public function run()
     {
         $admin = new Admin([
-            'email' => env('ADMIN_USER_EMAIL'),
-            'password' => Hash::make(env('ADMIN_USER_PASSWORD')),
+            'email' => 'admin@email.com',
+            'password' => Hash::make('password'),
         ]);
         $admin->save();
     }

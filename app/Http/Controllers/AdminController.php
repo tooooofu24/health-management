@@ -55,7 +55,7 @@ class AdminController extends Controller
     public function student(Request $request, $id)
     {
         $student = Student::findOrFail($id);
-        $answers = Answer::where('student_id', $id)->get();
+        $answers = Answer::where('student_id', $id)->orderBy('date', 'ASC')->get();
         return view('admin.student', compact(['answers', 'student']));
     }
 }

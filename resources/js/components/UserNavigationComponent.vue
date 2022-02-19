@@ -27,14 +27,13 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a
-              href="/form"
+              href=""
               class="nav-link"
               data-bs-toggle="tooltip"
               data-bs-placement="bottom"
               title="フォームで回答する"
               @mouseover="google_is_active = true"
               @mouseleave="google_is_active = false"
-              target="_blank"
               ><i
                 :class="[
                   'fa-lg',
