@@ -33,41 +33,43 @@
           </li>
         </ul>
         <div class="table-responsive">
-          <div
-            class="row px-4"
-            v-show="type == 'class'"
-            style="min-width: 35rem"
-          >
+          <div class="container">
             <div
-              class="col-4 text-center p-2"
-              v-for="_class in classes"
-              :key="_class.id"
+              class="row px-4"
+              v-show="type == 'class'"
+              style="min-width: 35rem"
             >
-              <a
-                :href="'/admin/classes/' + _class.id"
-                class="btn btn-success text-nowrap"
-                style="width: 10rem"
-                >{{ _class.grade + "年" + _class.class + "組" }}</a
+              <div
+                class="col-4 text-center p-2"
+                v-for="_class in classes"
+                :key="_class.id"
               >
+                <a
+                  :href="'/admin/classes/' + _class.id"
+                  class="btn btn-success text-nowrap"
+                  style="width: 10rem"
+                  >{{ _class.grade + "年" + _class.class + "組" }}</a
+                >
+              </div>
             </div>
-          </div>
 
-          <div
-            class="row px-4"
-            v-show="type == 'club'"
-            style="min-width: 35rem"
-          >
             <div
-              class="col-4 text-center p-2"
-              v-for="club in clubs"
-              :key="club.id"
+              class="row px-4"
+              v-show="type == 'club'"
+              style="min-width: 35rem"
             >
-              <a
-                :href="'/admin/clubs/' + club.id"
-                class="btn btn-primary text-nowrap"
-                style="width: 10rem"
-                >{{ club.name }}</a
+              <div
+                class="col-4 text-center p-2"
+                v-for="club in clubs"
+                :key="club.id"
               >
+                <a
+                  :href="'/admin/clubs/' + club.id"
+                  class="btn btn-primary text-nowrap"
+                  style="width: 10rem"
+                  >{{ club.name }}</a
+                >
+              </div>
             </div>
           </div>
         </div>
