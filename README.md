@@ -1,64 +1,31 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## 健康管理アプリケーション
+東京の中学校で行っている毎日の健康チェックを、WEBで管理できるようにしたものです。  
+1. 生徒がGoogleFormで当日の健康状態（体温など）を回答。
+2. 回答時にAPIでDBに保存。
+3. 教員と保護者・生徒が回答をWEB画面で確認できる。
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 作成経緯
+中学校教員をやっている先輩に「GoogleFormの回答を教員が見やすいようにまとめてほしい」とお願いされたことがきっかけでした。当初は表示だけとのことだったのでGASを使って表示をしていました。しかし、実際に使われていくにあたって「生徒の回答を承認できるようにしたい」「保護者や生徒も閲覧できるようにしたい」などの要望が増えていき、認証機能やDBが使えるLaravelでリプレイスすることにしました。
 
-## About Laravel
+## ページ(下記のリンクにはダミーのデータが入っています)
+- [トップページ](https://health-management-sample.ms2n-xxx.com/)
+![image](https://user-images.githubusercontent.com/64852221/154853483-91ced646-1cd9-4e06-bff5-ec7d2ccc86f7.png)
+- [教職員用管理画面](https://health-management-sample.ms2n-xxx.com/admin/classes/1)
+![image](https://user-images.githubusercontent.com/64852221/154853890-1dadadce-7e05-4c29-809a-73f17ba80e99.png)
+[保護者・生徒用マイページ](https://health-management-sample.ms2n-xxx.com/mypage) ※一度ログアウトが必要です
+![image](https://user-images.githubusercontent.com/64852221/154853946-8376e352-2370-4827-9362-2fe020133a66.png)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 工夫した点
+>**マルチログイン機能**  
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+[教職員ログイン](https://health-management-sample.ms2n-xxx.com/admin/login)と[保護者・生徒ログイン](https://health-management-sample.ms2n-xxx.com/login)の二つの認証機能を実装しています。生徒のプライバシー保護の観点から、生徒・保護者ログインでは自分のデータしか閲覧できないようになっています。また、今後の拡張性も考え、認証ごとにテーブルを分けて管理しています。
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+>**認証機能の非同期化**  
 
-## Learning Laravel
+[教職員用管理画面](https://health-management-sample.ms2n-xxx.com/admin/classes/1)での承認機能を非同期にしました。先輩から「承認は簡単にできるようにして欲しい」との声があったので、ページのリロードを挟まずに承認できるようにしています。
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 使用技術
+- Laravel 8.81.0
+- Vue.js 3.x
+- Bootstrap
+- [ConoHaのVPS(Apache、MySQL)](https://www.conoha.jp/vps/?btn_id=top--mainvisual_vps-top)
