@@ -70,15 +70,7 @@ class LoginController extends Controller
             return $this->sendLockoutResponse($request);
         }
 
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            // adminの場合はリメンバートークンを再発行しないように変更
-            if ($request->get('remember')) {
-                $user = auth()->user();
-                if (!$user->remember_token) {
-                    $this->ensureRememberTokenIsSet($user);
-                }
-                $this->queueRecallerCookie($user);
-            }
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
             return redirect()->intended('/admin');
         }
 
