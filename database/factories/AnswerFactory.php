@@ -18,6 +18,8 @@ class AnswerFactory extends Factory
             'bed_time' => $this->faker->dateTime(),
             'night_temp' => $this->faker->numberBetween(35, 37),
             'morning_temp' => $this->faker->numberBetween(35, 37),
+            'student_id' => $this->faker->numberBetween(1, 269),
+            'date' => $this->faker->dateTimeBetween('-1 day', 'now'),
             'q1' => $this->faker->boolean(),
             'q2' => $this->faker->boolean(),
             'q3' => $this->faker->boolean(),
