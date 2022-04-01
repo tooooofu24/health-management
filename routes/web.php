@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\StudentController;
 use App\Models\Answer;
 use App\Models\Student;
 use Carbon\Carbon;

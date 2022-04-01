@@ -16,7 +16,7 @@
     <meta property="og:title" content="@yield('title')" />
     <meta property="og:description" content="健康チェックの管理ページです。" />
     <meta property="og:image" content="{{ asset('images/icon-square.jpeg') }}" />
-    <meta property="og:site_name" content="音楽科卒業演奏会" />
+    <meta property="og:site_name" content="健康チェックの管理ページ" />
     <meta property="og:locale" content="ja_JP" />
 
     <!-- Scripts -->
