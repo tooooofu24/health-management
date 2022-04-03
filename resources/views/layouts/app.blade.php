@@ -16,7 +16,7 @@
     <meta property="og:title" content="@yield('title')" />
     <meta property="og:description" content="健康チェックの管理ページです。" />
     <meta property="og:image" content="{{ asset('images/icon-square.jpeg') }}" />
-    <meta property="og:site_name" content="音楽科卒業演奏会" />
+    <meta property="og:site_name" content="健康チェックの管理ページ" />
     <meta property="og:locale" content="ja_JP" />
 
     <!-- Scripts -->
@@ -43,11 +43,36 @@
         @endif
         <main class="pb-4 h-100" style="padding-top: 4rem">
             @yield('content')
+            {{-- 承認トースト --}}
             <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
                 <div id="toast" class="toast hide w-auto" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="toast-body px-4">承認しました！</div>
                 </div>
             </div>
+            {{-- フラッシュメッセージ --}}
+            @if( session('flash_message') )
+            <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 5">
+                <div id="flash_message" class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="width: 70vw;">
+                    <div class="d-flex align-items-center p-2">
+                        <div class="toast-body">
+                            <span class="fs-6">
+                                {{ session('flash_message') }}
+                            </span>
+                        </div>
+                        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+            <script>
+                window.addEventListener('load', function() {
+                    let toast = new bootstrap.Toast(document.getElementById("flash_message"), {
+                        autohide: true, // 自動で閉じる
+                        delay: 2500 // 2500ms後に閉じる
+                    });
+                    toast.show()
+                });
+            </script>
+            @endif
         </main>
     </div>
 </body>

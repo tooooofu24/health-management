@@ -42,9 +42,14 @@ class GradeSeeder extends Seeder
             [
                 'grade' => 3,
                 'class' => 'A',
-            ], [
+            ],
+            [
                 'grade' => 3,
                 'class' => 'B',
+            ],
+            [
+                'grade' => 3,
+                'class' => 'C',
             ],
         ]);
     }

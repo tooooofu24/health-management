@@ -14,4 +14,9 @@ class Student extends Model
     {
         return $this->belongsTo(Grade::class, 'grade_id');
     }
+
+    public function club()
+    {
+        return $this->belongsTo(Club::class);
+    }
 }

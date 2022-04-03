@@ -56,6 +56,6 @@ class AdminController extends Controller
     {
         $student = Student::findOrFail($id);
         $answers = Answer::where('student_id', $id)->get();
-        return view('admin.student', compact(['answers', 'student']));
+        return view('admin.students.show', compact(['answers', 'student']));
     }
 }
