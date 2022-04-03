@@ -13,6 +13,9 @@
     </nav>
     <div class="card">
         <div class="card-body">
+            <div class="mb-3 text-end">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-pen me-2"></i>詳細・編集</button>
+            </div>
             <div class="table-responsive">
                 <table class="table table-hover table-centered border-0 w-100">
                     <thead class="table-secondary border-0 rounded">
@@ -56,6 +59,66 @@
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <form action="">
+                    <div class="modal-header">
+                        <h5 class="modal-title">生徒情報更新</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6 px-2">
+                                <label for="student_modal_name">生徒氏名</label>
+                                <div class="input-group mb-3">
+                                    <label class="input-group-text" for="student_modal_name"><i class="fa-solid fa-user"></i></label>
+                                    <input id="student_modal_name" name="name" type="text" class="form-control" placeholder="氏名を入力してください" value="{{ $student->name }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6 px-2">
+                                <label for="student_modal_class">クラス</label>
+                                <div class="input-group mb-3">
+                                    <label class="input-group-text" for="student_modal_class"><i class="fa-solid fa-school"></i></label>
+                                    <select name="grade_id" id="student_modal_class" class="form-select">
+                                        @foreach(App\Models\Grade::all() as $grade)
+                                        <option value="" @if($grade->id == $student->grade_id) selected @endif>{{ $grade->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 px-2">
+                                <label for="student_modal_number">出席番号</label>
+                                <div class="input-group mb-3">
+                                    <label class="input-group-text" for="student_modal_number"><i class="fa-solid fa-graduation-cap"></i></label>
+                                    <select name="number" id="student_modal_number" class="form-select">
+                                        @for($i=1; $i<=35; $i++) <option value="{{ $i }}" @if($i==$student->number) selected @endif>{{ $i }}</option>
+                                            @endfor
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 px-2">
+                                <label for="student_modal_club">部活動</label>
+                                <div class="input-group mb-3">
+                                    <label class="input-group-text" for="student_modal_club"><i class="fa-solid fa-baseball-bat-ball"></i></label>
+                                    <select name="club_id" id="student_modal_club" class="form-select">
+                                        <option value="">未所属</option>
+                                        @foreach(App\Models\Club::all() as $club)
+                                        <option value="" @if($student->club_id == $club->id) selected @endif>{{ $club->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+                        <button type="submit" class="btn btn-primary">更新</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
