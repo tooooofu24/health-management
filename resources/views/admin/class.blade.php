@@ -21,7 +21,7 @@
                         <input type="date" name="date" class="form-control" value="{{ $date }}" onchange="submit(this.form)">
                     </div>
                 </form>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus me-2"></i>新規登録</button>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#studentModal"><i class="fa-solid fa-plus me-2"></i>新規登録</button>
             </div>
             <div class="table-responsive">
                 <table class="table table-hover table-centered ">
@@ -80,36 +80,37 @@
         </div>
     </div>
     {{-- 登録モーダル --}}
-    <script>
+    <!-- <script>
         window.addEventListener('load', function() {
-            var modal = new bootstrap.Modal(document.getElementById('exampleModal')) // Modalのインスタンスを作成
+            var modal = new bootstrap.Modal(document.getElementById('studentModal')) // Modalのインスタンスを作成
             modal.show() // show()メソッドを実行
         });
-    </script>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
+    </script> -->
+    <div class="modal fade" id="studentModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
-                <form action="">
+                <form action="{{ route('admin.students.store') }}" method="POST">
                     <div class="modal-header">
                         <h5 class="modal-title">生徒新規登録</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
+                            @csrf
                             <div class="col-md-6 px-2">
                                 <label for="student_modal_name">生徒氏名</label>
                                 <div class="input-group mb-3">
                                     <label class="input-group-text" for="student_modal_name"><i class="fa-solid fa-user"></i></label>
-                                    <input id="student_modal_name" name="name" type="text" class="form-control" placeholder="氏名を入力してください" aria-label="Username">
+                                    <input id="student_modal_name" name="name" type="text" class="form-control" placeholder="氏名を入力してください" required>
                                 </div>
                             </div>
                             <div class="col-md-6 px-2">
                                 <label for="student_modal_class">クラス</label>
                                 <div class="input-group mb-3">
                                     <label class="input-group-text" for="student_modal_class"><i class="fa-solid fa-school"></i></label>
-                                    <select name="grade_id" id="student_modal_class" class="form-select">
+                                    <select name="grade_id" id="student_modal_class" class="form-select" required>
                                         @foreach(App\Models\Grade::all() as $grade)
-                                        <option value="" @if($grade->id == $class->id) selected @endif>{{ $grade->name }}</option>
+                                        <option value="{{ $grade->id }}" @if($grade->id == $class->id) selected @endif>{{ $grade->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -118,10 +119,7 @@
                                 <label for="student_modal_number">出席番号</label>
                                 <div class="input-group mb-3">
                                     <label class="input-group-text" for="student_modal_number"><i class="fa-solid fa-graduation-cap"></i></label>
-                                    <select name="number" id="student_modal_number" class="form-select">
-                                        @for($i=1; $i<=35; $i++) <option value="">{{ $i }}</option>
-                                            @endfor
-                                    </select>
+                                    <input type="number" name="number" class="form-control" id="student_modal_number" required max="50" min="1" maxlength="2">
                                 </div>
                             </div>
                             <div class="col-md-6 px-2">

@@ -7,11 +7,10 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    public function index(Request $request)
+    public function store(Request $request)
     {
-        $query = Student::query();
-        $query = $query->where('grade_id', $request->input('grade_id', 1));
-        $students = $query->get();
-        return view('admin.students.index', compact(['students']));
+        $student = new Student();
+        $student->fill($request->all())->save();
+        return redirect()->back()->with('flash_message', '登録しました！');
     }
 }

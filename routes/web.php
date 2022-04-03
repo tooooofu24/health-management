@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth:admin', 'as' => 'admin.', 'prefix' => 'admin
     Route::get('/classes/{id}', [AdminController::class, 'class'])->name('class');
     Route::get('/clubs/{id}', [AdminController::class, 'club'])->name('club');
     Route::get('/students/{id}', [AdminController::class, 'student'])->name('student');
+    Route::post('students', [StudentController::class, 'store'])->name('students.store');
 });
 
 Route::group(['middleware' => 'auth'], function () {
