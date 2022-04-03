@@ -38,8 +38,10 @@ Route::group(['middleware' => 'auth:admin', 'as' => 'admin.', 'prefix' => 'admin
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::get('/classes/{id}', [AdminController::class, 'class'])->name('class');
     Route::get('/clubs/{id}', [AdminController::class, 'club'])->name('club');
+    // student
     Route::get('/students/{id}', [AdminController::class, 'student'])->name('student');
     Route::post('students', [StudentController::class, 'store'])->name('students.store');
+    Route::put('students/{id}', [StudentController::class, 'update'])->name('students.update');
 });
 
 Route::group(['middleware' => 'auth'], function () {

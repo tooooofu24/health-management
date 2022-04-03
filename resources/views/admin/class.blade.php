@@ -129,7 +129,7 @@
                                     <select name="club_id" id="student_modal_club" class="form-select">
                                         <option value="">未所属</option>
                                         @foreach(App\Models\Club::all() as $club)
-                                        <option value="">{{ $club->name }}</option>
+                                        <option value="{{ $club->id }}">{{ $club->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
