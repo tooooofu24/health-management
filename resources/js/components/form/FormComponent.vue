@@ -1,21 +1,17 @@
 <template>
   <form action="">
-    <FormOneComponent
-      v-if="page == 1"
-      @updatePage="updatePage"
-    ></FormOneComponent>
-    <FormTwoComponent
-      v-if="page == 2"
-      @updatePage="updatePage"
-    ></FormTwoComponent>
-    <FormThreeComponent
-      v-if="page == 3"
-      @updatePage="updatePage"
-    ></FormThreeComponent>
-    <FormFourComponent
-      v-if="page == 4"
-      @updatePage="updatePage"
-    ></FormFourComponent>
+    <div v-show="page == 1">
+      <FormOneComponent @updatePage="updatePage"></FormOneComponent>
+    </div>
+    <div v-show="page == 2">
+      <FormTwoComponent @updatePage="updatePage"></FormTwoComponent>
+    </div>
+    <div v-show="page == 3">
+      <FormThreeComponent @updatePage="updatePage"></FormThreeComponent>
+    </div>
+    <div v-show="page == 4">
+      <FormFourComponent @updatePage="updatePage"></FormFourComponent>
+    </div>
   </form>
 </template>
 <script>

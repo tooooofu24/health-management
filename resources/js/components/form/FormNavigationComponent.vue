@@ -1,9 +1,6 @@
 <template>
   <div class="d-flex justify-content-between mt-3 align-items-center">
-    <div
-      :data-bs-toggle="page <= 1 ? 'tooltip' : null"
-      :title="page <= 1 ? '戻れません' : null"
-    >
+    <div>
       <button
         type="button"
         class="btn btn-sm btn-outline-secondary"
