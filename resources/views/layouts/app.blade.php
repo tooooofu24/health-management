@@ -33,12 +33,17 @@
 
 <body class="h-100">
     <div id="app" class="h-100">
-        @if(Route::is('admin.*'))
-        <admin-navigation-component :admin='@json(Auth::user())' title="@yield('nav_title')" :classes='@json(App\Models\Grade::all())' :clubs='@json(App\Models\Club::all())'>
-        </admin-navigation-component>
-        @else
-        <user-navigation-component :user='@json(Auth::user())' title="@yield('nav_title')"></user-navigation-component>
-        @endif
+        @auth('admin')
+        @include('layouts.navs.admin-navigation')
+        @endauth
+
+        @auth('web')
+        @include('layouts.navs.user-navigation')
+        @endauth
+
+        @guest
+        @include('layouts.navs.navigation')
+        @endguest
         <main class="pb-4 h-100" style="padding-top: 4rem">
             @yield('content')
             {{-- 承認トースト --}}

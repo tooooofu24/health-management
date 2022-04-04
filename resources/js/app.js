@@ -14,10 +14,7 @@ import "@fortawesome/fontawesome-free/js/solid";
 import "@fortawesome/fontawesome-free/js/regular";
 
 import { createApp } from 'vue';
-import ExampleComponent from './components/ExampleComponent.vue';
 import CommonCheckButtonComponent from './components/CommonCheckButtonComponent.vue';
-import UserNavigationComponent from './components/UserNavigationComponent.vue';
-import AdminNavigationComponent from './components/AdminNavigationComponent.vue';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -27,10 +24,7 @@ import AdminNavigationComponent from './components/AdminNavigationComponent.vue'
 
 createApp({
     components: {
-        ExampleComponent,
         CommonCheckButtonComponent,
-        UserNavigationComponent,
-        AdminNavigationComponent
     },
 }).mount('#app')
 
