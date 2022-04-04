@@ -15,7 +15,10 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $classes = Grade::all();
+        $classes = Grade::query()
+            ->orderBy('grade')
+            ->orderBy('class')
+            ->get();
         $clubs = Club::all();
         return view('admin.index', compact(['classes', 'clubs']));
     }

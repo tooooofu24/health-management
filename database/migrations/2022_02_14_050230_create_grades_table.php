@@ -18,6 +18,7 @@ class CreateGradesTable extends Migration
             $table->unsignedTinyInteger('grade');
             $table->string('class');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

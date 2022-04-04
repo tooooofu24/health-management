@@ -20,4 +20,12 @@ class StudentController extends Controller
         $student->fill($request->all())->save();
         return redirect()->back()->with('flash_message', '更新しました！');
     }
+
+    public function destroy($id)
+    {
+        $student = Student::findOrFail($id);
+        $grade_id = $student->grade_id;
+        $student->delete();
+        return redirect()->route('admin.class', ['id' => $grade_id])->with('flash_message', '削除が完了しました！');
+    }
 }

@@ -42,15 +42,23 @@ Route::group(['middleware' => 'auth:admin', 'as' => 'admin.', 'prefix' => 'admin
     Route::get('/students/{id}', [AdminController::class, 'student'])->name('student');
     Route::post('students', [StudentController::class, 'store'])->name('students.store');
     Route::put('students/{id}', [StudentController::class, 'update'])->name('students.update');
+    Route::delete('/students/{id}', [StudentController::class, 'destroy'])->name('students.destroy');
 });
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/mypage', [AnswerController::class, 'mypage'])->name('index');
 });
 
+Route::get('form', [AnswerController::class, 'form'])->name('form');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('form', function () {
-    $today = Carbon::today()->toDateString();
-    return redirect("https://docs.google.com/forms/d/e/1FAIpQLSeTrkcmNjYMYZUqfw5suWYJn-9r3Y9nwVVqEx-Ez3bd3chCZQ/viewform?usp=pp_url&entry.501475986=$today");
-})->name('form');
+// Route::get('form', function () {
+//     $today = Carbon::today()->toDateString();
+//     return redirect("https://docs.google.com/forms/d/e/1FAIpQLSeTrkcmNjYMYZUqfw5suWYJn-9r3Y9nwVVqEx-Ez3bd3chCZQ/viewform?usp=pp_url&entry.501475986=$today");
+// })->name('form');
+
+Route::get('develop', function () {
+    $grades = App\Models\Grade::all();
+    dd($grades->pluck('class')->unique());
+});
