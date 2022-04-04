@@ -21,7 +21,7 @@
                         <input type="date" name="date" class="form-control" value="{{ $date }}" onchange="submit(this.form)">
                     </div>
                 </form>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#studentModal"><i class="fa-solid fa-plus me-2"></i>新規登録</button>
+                <button class="btn btn-primary text-nowrap" data-bs-toggle="modal" data-bs-target="#studentModal"><i class="fa-solid fa-plus me-2"></i>生徒新規登録</button>
             </div>
             <div class="table-responsive">
                 <table class="table table-hover table-centered ">
