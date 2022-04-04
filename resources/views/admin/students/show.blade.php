@@ -14,7 +14,12 @@
     <div class="card">
         <div class="card-body">
             <div class="mb-3 text-end">
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#studentModal"><i class="fa-solid fa-pen me-2"></i>詳細・編集</button>
+                <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#studentModal"><i class="fa-solid fa-pen me-2"></i>詳細・編集</button>
+                <form action="{{ route('admin.students.destroy',['id'=>$student->id]) }}" method="POST" class="d-inline" onsubmit="return confirm('本当に削除しますか？')">
+                    @method('delete')
+                    @csrf
+                    <button class="btn btn-danger" type="submit"><i class="fa-solid fa-trash-can me-2"></i>削除</button>
+                </form>
             </div>
             <div class="table-responsive">
                 <table class="table table-hover table-centered border-0 w-100">
