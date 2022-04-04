@@ -7,6 +7,12 @@
 window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle.js');
 window.axios = require('axios');
 
+// fontawsome
+import "@fortawesome/fontawesome-free/js/fontawesome";
+import "@fortawesome/fontawesome-free/js/brands";
+import "@fortawesome/fontawesome-free/js/solid";
+import "@fortawesome/fontawesome-free/js/regular";
+
 import { createApp } from 'vue';
 import ExampleComponent from './components/ExampleComponent.vue';
 import AdminTopComponent from './components/AdminTopComponent.vue';

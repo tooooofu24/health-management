@@ -13,4 +13,9 @@ class AnswerController extends Controller
         $answers = Answer::where('student_id', $student->id)->get();
         return view('mypage.index', compact(['answers']));
     }
+
+    public function form()
+    {
+        return view('form');
+    }
 }

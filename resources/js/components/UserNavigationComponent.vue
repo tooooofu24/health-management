@@ -34,12 +34,11 @@
               title="フォームで回答する"
               @mouseover="google_is_active = true"
               @mouseleave="google_is_active = false"
-              target="_blank"
               ><i
                 :class="[
                   'fa-lg',
                   {
-                    'fa-brands fa-google': !google_is_active,
+                    'fa-solid fa-file-circle-plus': !google_is_active,
                     'fa-solid fa-pencil': google_is_active,
                   },
                 ]"
