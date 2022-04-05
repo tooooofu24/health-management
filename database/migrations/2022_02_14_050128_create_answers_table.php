@@ -26,7 +26,7 @@ class CreateAnswersTable extends Migration
             $table->boolean('q3')->comment('だるさ');
             $table->boolean('q4')->comment('食欲減');
             $table->boolean('q5')->comment('通院');
-            $table->string('comment')->nullable();
+            $table->text('comment')->nullable();
             $table->dateTime('checked_at')->nullable();
             $table->timestamps();
         });

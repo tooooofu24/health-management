@@ -5,8 +5,8 @@
         <div class="input-group">
             <label class="input-group-text" for="form_q1"><i class="fa-solid fa-head-side-cough"></i></label>
             <select name="q1" id="form_q1" class="form-select" required>
-                <option value="1">はい</option>
-                <option value="0" selected>いいえ</option>
+                <option value="1" @if(session('form.q1')=='1' ) selected @endif>はい</option>
+                <option value="0" @if(session('form.q1')!='1' ) selected @endif>いいえ</option>
             </select>
         </div>
     </div>
@@ -15,8 +15,8 @@
         <div class="input-group">
             <label class="input-group-text" for="form_q2"><i class="fa-solid fa-head-side-mask"></i></label>
             <select name="q2" id="form_q2" class="form-select" required>
-                <option value="1">はい</option>
-                <option value="0" selected>いいえ</option>
+                <option value="1" @if(session('form.q2')=='1' ) selected @endif>はい</option>
+                <option value="0" @if(session('form.q2')!='1' ) selected @endif>いいえ</option>
             </select>
         </div>
     </div>
@@ -25,8 +25,8 @@
         <div class="input-group">
             <label class="input-group-text" for="form_q3"><i class="fa-solid fa-face-tired"></i></label>
             <select name="q3" id="form_q3" class="form-select" required>
-                <option value="1">はい</option>
-                <option value="0" selected>いいえ</option>
+                <option value="1" @if(session('form.q3')=='1' ) selected @endif>はい</option>
+                <option value="0" @if(session('form.q3')!='1' ) selected @endif>いいえ</option>
             </select>
         </div>
     </div>
@@ -35,8 +35,8 @@
         <div class="input-group">
             <label class="input-group-text" for="form_q4"><i class="fa-solid fa-face-frown"></i></label>
             <select name="q4" id="form_q4" class="form-select" required>
-                <option value="1">はい</option>
-                <option value="0" selected>いいえ</option>
+                <option value="1" @if(session('form.q4')=='1' ) selected @endif>はい</option>
+                <option value="0" @if(session('form.q4')!='1' ) selected @endif>いいえ</option>
             </select>
         </div>
     </div>
@@ -45,8 +45,8 @@
         <div class="input-group">
             <label class="input-group-text" for="form_q5"><i class="fa-solid fa-hospital"></i></label>
             <select name="q5" id="form_q5" class="form-select" required>
-                <option value="1">はい</option>
-                <option value="0" selected>いいえ</option>
+                <option value="1" @if(session('form.q5')=='1' ) selected @endif>はい</option>
+                <option value="0" @if(session('form.q5')!='1' ) selected @endif>いいえ</option>
             </select>
         </div>
     </div>

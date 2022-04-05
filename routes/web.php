@@ -23,7 +23,11 @@ use League\Csv\Reader;
 |
 */
 
-Route::middleware(['guest', 'guest:admin'])->get('/', function () {
+// Route::middleware(['guest', 'guest:admin'])->get('/', function () {
+//     return view('top');
+// })->name('top');
+
+Route::get('/', function () {
     return view('top');
 })->name('top');
 
@@ -51,10 +55,11 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group(['as' => 'form.', 'prefix' => 'form'], function () {
-    Route::get('/1', [AnswerController::class, 'form'])->name('show.1');
-    Route::post('/2', [FormController::class, 'submitPageOne'])->name('show.2');
-    Route::post('/3', [FormController::class, 'submitPageTwo'])->name('show.3');
-    Route::post('/4', [FormController::class, 'submitPageThree'])->name('show.4');
+    Route::get('/1', [FormController::class, 'showPageOne'])->name('show.1');
+    Route::post('/2', [FormController::class, 'showPageTwo'])->name('show.2');
+    Route::post('/3', [FormController::class, 'showPageThree'])->name('show.3');
+    Route::post('/4', [FormController::class, 'showPageFour'])->name('show.4');
+    Route::post('/store', [FormController::class, 'store'])->name('store');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

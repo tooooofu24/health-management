@@ -59,7 +59,7 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $e)
     {
         if ($e instanceof \Illuminate\Session\TokenMismatchException) {
-            return back()->with('flash_message', 'ページの有効期限が切れました');
+            return redirect()->route(('top'))->with('flash_message', 'ページの有効期限が切れました');
         }
         if ($e instanceof \Illuminate\Auth\AuthenticationException) {
             return redirect($e->redirectTo())->with('flash_message', '再度ログインしてから操作してください');

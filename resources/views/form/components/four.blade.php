@@ -1,9 +1,10 @@
-<form action="">
+<form action="{{ route('form.store') }}" method="POST">
+    @csrf
     <div class="col-12">
-        <label for="">その他症状など</label>
+        <label for="form_comment">その他症状など</label>
         <div class="input-group">
-            <label class="input-group-text" for=""><i class="fa-solid fa-circle-info"></i></label>
-            <textarea name="comment" id="" rows="2" class="form-control"></textarea>
+            <label class="input-group-text" for="form_comment"><i class="fa-solid fa-circle-info"></i></label>
+            <textarea name="comment" id="form_comment" rows="4" class="form-control" value="{{ session('form.comment') }}" maxlength="1000"></textarea>
         </div>
     </div>
     <div class="mt-3">

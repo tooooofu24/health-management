@@ -14,13 +14,4 @@ class AnswerController extends Controller
         $answers = Answer::where('student_id', $student->id)->get();
         return view('mypage.index', compact(['answers']));
     }
-
-    public function form()
-    {
-        $classes = Grade::query()
-            ->orderBy('grade')
-            ->orderBy('class')
-            ->get();
-        return view('form.index', compact(['classes']));
-    }
 }
