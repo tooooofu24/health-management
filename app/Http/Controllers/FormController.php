@@ -8,6 +8,25 @@ class FormController extends Controller
 {
     public function submitPageOne(Request $request)
     {
-        dd($request->all());
+        foreach ($request->except('_token') as $key => $value) {
+            $request->session()->put($key, $value);
+        };
+        return view('form.index');
+    }
+
+    public function submitPageTwo(Request $request)
+    {
+        foreach ($request->except('_token') as $key => $value) {
+            $request->session()->put($key, $value);
+        };
+        return view('form.index');
+    }
+
+    public function submitPageThree(Request $request)
+    {
+        foreach ($request->except('_token') as $key => $value) {
+            $request->session()->put($key, $value);
+        };
+        return view('form.index');
     }
 }

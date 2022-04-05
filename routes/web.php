@@ -51,8 +51,10 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group(['as' => 'form.', 'prefix' => 'form'], function () {
-    Route::get('/', [AnswerController::class, 'form'])->name('index');
-    Route::post('/2', [FormController::class, 'submitPageOne'])->name('submit.1');
+    Route::get('/1', [AnswerController::class, 'form'])->name('show.1');
+    Route::post('/2', [FormController::class, 'submitPageOne'])->name('show.2');
+    Route::post('/3', [FormController::class, 'submitPageTwo'])->name('show.3');
+    Route::post('/4', [FormController::class, 'submitPageThree'])->name('show.4');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

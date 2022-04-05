@@ -21,11 +21,11 @@ class CreateAnswersTable extends Migration
             $table->dateTime('bed_time')->comment('就寝時間');
             $table->unsignedFloat('night_temp')->comment('夜の体温');
             $table->unsignedFloat('morning_temp')->comment('朝の体温');
-            $table->boolean('q1');
-            $table->boolean('q2');
-            $table->boolean('q3');
-            $table->boolean('q4');
-            $table->boolean('q5');
+            $table->boolean('q1')->comment('咳');
+            $table->boolean('q2')->comment('息苦しさ');
+            $table->boolean('q3')->comment('だるさ');
+            $table->boolean('q4')->comment('食欲減');
+            $table->boolean('q5')->comment('通院');
             $table->string('comment')->nullable();
             $table->dateTime('checked_at')->nullable();
             $table->timestamps();
