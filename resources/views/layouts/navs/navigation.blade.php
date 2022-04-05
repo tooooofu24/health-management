@@ -8,14 +8,14 @@
             <ul class="navbar-nav ms-auto">
                 @guest
                 <li class="nav-item">
-                    <a class="nav-link @if(Route::is('login')) active @endif" href="{{ route('login') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="生徒・保護者様ログイン"><i class="fa-solid fa-user-group fa-lg"></i>ログイン</a>
+                    <a class="nav-link @if(Route::is('login')) active @endif" href="{{ route('login') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="生徒・保護者様ログイン"><i class="fa-solid fa-user-group fa-lg"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if(Route::is('admin.login')) active @endif" href="{{ route('admin.login') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="教職員ログイン"><i class="fa-solid fa-user-graduate fa-lg"></i>ログイン</a>
+                    <a class="nav-link @if(Route::is('admin.login')) active @endif" href="{{ route('admin.login') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="教職員ログイン"><i class="fa-solid fa-user-graduate fa-lg"></i></a>
                 </li>
                 @endguest
                 <li class="nav-item">
-                    <a class="nav-link @if(Route::is('form.index')) active @endif" href="{{ route('form.index') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="回答フォーム"><i class="fa-solid fa-file-circle-plus fa-lg"></i>フォーム</a>
+                    <a class="nav-link @if(Route::is('form.show.1')) active @endif" href="{{ route('form.show.1') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="回答フォーム"><i class="fa-solid fa-file-circle-plus fa-lg"></i></a>
                 </li>
             </ul>
         </div>
