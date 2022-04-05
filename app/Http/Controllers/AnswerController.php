@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
+use App\Models\Grade;
 use Illuminate\Http\Request;
 
 class AnswerController extends Controller
@@ -16,6 +17,10 @@ class AnswerController extends Controller
 
     public function form()
     {
-        return view('form');
+        $classes = Grade::query()
+            ->orderBy('grade')
+            ->orderBy('class')
+            ->get();
+        return view('form.index', compact(['classes']));
     }
 }

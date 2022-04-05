@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApiAnswerController;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\ApiStudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/check/{id}', [ApiController::class, 'check']);
 Route::post('answers', [ApiAnswerController::class, 'store']);
+Route::apiResource('students', ApiStudentController::class);

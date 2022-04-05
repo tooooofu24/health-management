@@ -46,4 +46,25 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Throwable  $e
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @throws \Throwable
+     */
+    public function render($request, Throwable $e)
+    {
+        if ($e instanceof \Illuminate\Session\TokenMismatchException) {
+            return back()->with('flash_message', 'ページの有効期限が切れました');
+        }
+        if ($e instanceof \Illuminate\Auth\AuthenticationException) {
+            return redirect($e->redirectTo())->with('flash_message', '再度ログインしてから操作してください');
+        }
+
+        return parent::render($request, $e);
+    }
 }

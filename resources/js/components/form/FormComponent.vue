@@ -1,7 +1,10 @@
 <template>
   <form action="">
     <div v-show="page == 1">
-      <FormOneComponent @updatePage="updatePage"></FormOneComponent>
+      <FormOneComponent
+        @updatePage="updatePage"
+        :classes="classes"
+      ></FormOneComponent>
     </div>
     <div v-show="page == 2">
       <FormTwoComponent @updatePage="updatePage"></FormTwoComponent>
@@ -37,5 +40,6 @@ export default {
     FormThreeComponent,
     FormFourComponent,
   },
+  props: ["classes"],
 };
 </script>

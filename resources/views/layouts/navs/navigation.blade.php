@@ -15,7 +15,7 @@
                 </li>
                 @endguest
                 <li class="nav-item">
-                    <a class="nav-link @if(Route::is('form')) active @endif" href="{{ route('form') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="回答フォーム"><i class="fa-solid fa-file-circle-plus fa-lg"></i>フォーム</a>
+                    <a class="nav-link @if(Route::is('form.index')) active @endif" href="{{ route('form.index') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="回答フォーム"><i class="fa-solid fa-file-circle-plus fa-lg"></i>フォーム</a>
                 </li>
             </ul>
         </div>
