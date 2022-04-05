@@ -11,6 +11,7 @@
         name="date"
         id="form_date"
         v-model="date"
+        required
       />
     </div>
   </div>
@@ -25,10 +26,9 @@
         id="form_grade_id"
         class="form-select"
         v-model="grade_id"
+        required
       >
-        <option :value="null" disabled selected class="d-none">
-          選択してください
-        </option>
+        <option value="" disabled selected>選択してください</option>
         <option
           v-for="classRoom in classes"
           :key="classRoom.id"
@@ -53,7 +53,7 @@
         :disabled="!grade_id"
         v-model="student_id"
       >
-        <option :value="null" disabled selected class="d-none">
+        <option value="" disabled selected class="d-none">
           選択してください
         </option>
         <option
@@ -66,23 +66,17 @@
       </select>
     </div>
   </div>
-  <FormNavigationComponent
-    :page="$parent.page"
-    @updatePage="updatePage"
-  ></FormNavigationComponent>
 </template>
 <script>
-import FormNavigationComponent from "./FormNavigationComponent.vue";
 import { format } from "date-fns";
 
 export default {
   data: function () {
     return {
-      page: 1,
       date: format(new Date(), "yyyy-MM-dd"),
-      grade_id: null,
+      grade_id: "",
       students: [],
-      student_id: null,
+      student_id: "",
     };
   },
   watch: {
@@ -92,18 +86,15 @@ export default {
           params: { grade_id: grade_id },
         })
         .then((res) => {
-          console.log(res.data);
           this.students = res.data;
         });
     },
   },
-  methods: {
-    updatePage(num) {
-      this.$emit("updatePage", num);
-    },
+  props: ["classes", "session"],
+  mounted() {
+    // sessionから値を補完
+    this.grade_id = this.session.form?.grade_id ?? "";
+    this.student_id = this.session.form?.student_id ?? "";
   },
-  components: { FormNavigationComponent },
-  emits: ["updatePage"],
-  props: ["classes"],
 };
 </script>
