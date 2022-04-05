@@ -41,20 +41,20 @@
         @include('layouts.navs.user-navigation')
         @endauth
 
-        @guest
+        @if(auth('admin')->guest() && auth('web')->guest())
         @include('layouts.navs.navigation')
-        @endguest
+        @endif
         <main class="pb-4 h-100" style="padding-top: 4rem">
             @yield('content')
             {{-- 承認トースト --}}
-            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050">
                 <div id="toast" class="toast hide w-auto" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="toast-body px-4">承認しました！</div>
                 </div>
             </div>
             {{-- フラッシュメッセージ --}}
             @if( session('flash_message') )
-            <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 5">
+            <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1050">
                 <div id="flash_message" class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="width: 70vw;">
                     <div class="d-flex align-items-center p-2">
                         <div class="toast-body">

@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse me-4" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link @if(Route::is('form')) active @endif" href="{{ route('form') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="回答フォーム"><i class="fa-solid fa-file-circle-plus fa-lg"></i></a>
+                    <a class="nav-link @if(Route::is('form.index')) active @endif" href="{{ route('form.index') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="回答フォーム"><i class="fa-solid fa-file-circle-plus fa-lg"></i></a>
                 </li>
                 @auth
                 <li class="nav-item">

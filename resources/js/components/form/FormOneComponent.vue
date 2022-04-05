@@ -40,9 +40,9 @@
     </div>
   </div>
   <div class="col-12">
-    <label for="">氏名</label>
+    <label for="form_student_id">氏名</label>
     <div class="input-group">
-      <label class="input-group-text" for=""
+      <label class="input-group-text" for="form_student_id"
         ><i class="fa-solid fa-user"></i
       ></label>
       <select

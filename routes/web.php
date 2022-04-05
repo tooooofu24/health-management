@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\StudentController;
 use App\Models\Answer;
 use App\Models\Student;
@@ -49,7 +50,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/mypage', [AnswerController::class, 'mypage'])->name('index');
 });
 
-Route::get('form', [AnswerController::class, 'form'])->name('form');
+Route::group(['as' => 'form.', 'prefix' => 'form'], function () {
+    Route::get('/', [AnswerController::class, 'form'])->name('index');
+    Route::post('/2', [FormController::class, 'submitPageOne'])->name('submit.1');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

@@ -21,6 +21,6 @@ class AnswerController extends Controller
             ->orderBy('grade')
             ->orderBy('class')
             ->get();
-        return view('form', compact(['classes']));
+        return view('form.index', compact(['classes']));
     }
 }
