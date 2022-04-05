@@ -15,7 +15,7 @@ import "@fortawesome/fontawesome-free/js/regular";
 
 import { createApp } from 'vue';
 import CommonCheckButtonComponent from './components/CommonCheckButtonComponent.vue';
-import FormComponent from './components/form/FormComponent.vue';
+import FormOneComponent from "./components/form/FormOneComponent.vue"
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -26,7 +26,7 @@ import FormComponent from './components/form/FormComponent.vue';
 createApp({
     components: {
         CommonCheckButtonComponent,
-        FormComponent,
+        FormOneComponent,
     },
 }).mount('#app')
 

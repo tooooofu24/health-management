@@ -1,6 +1,10 @@
 <div class="d-flex justify-content-between align-items-center">
     @if(Route::is('form.show.1'))
     <div style="width: 3.5rem;"></div>
+    @elseif(Route::is('form.show.2'))
+    <a href="{{ route('form.show.1') }}" class="btn btn-sm btn-outline-secondary">
+        <i class="fa-solid fa-angle-left me-2"></i>戻る
+    </a>
     @else
     <button type="button" onclick="history.back()" class="btn btn-sm btn-outline-secondary">
         <i class="fa-solid fa-angle-left me-2"></i>戻る
