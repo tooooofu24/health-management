@@ -10,7 +10,7 @@
         </div>
         <div class="card-body">
             <div class="mx-auto" style="max-width: 50rem;">
-                <form-component></form-component>
+                <form-component :classes='@json($classes)'></form-component>
             </div>
         </div>
     </div>

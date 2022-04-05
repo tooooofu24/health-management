@@ -13,6 +13,8 @@ class Grade extends Model
 
     protected $guarded = ['id'];
 
+    protected $appends = ['name'];
+
     public function getNameAttribute()
     {
         return "{$this->grade}年{$this->class}組";
